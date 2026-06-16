@@ -16,6 +16,15 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+/**
+ * Componente para el poblado inicial de datos (Data Seeding) en la base de datos.
+ * * - @Component: Registra esta clase como un Bean de Spring para que se instancie automáticamente
+ * e inyecte los repositorios necesarios en el constructor.
+ * - CommandLineRunner: Interfaz que ejecuta el método 'run' una sola vez justo después de
+ * que el servidor arranca y está listo.
+ * - Propósito: Insertar usuarios, artistas, álbumes y canciones reales de prueba si la base
+ * de datos está vacía, asegurando contenido listo para el desarrollo del Frontend.
+ */
 
 @Component
 public class DataSeeder implements CommandLineRunner {
