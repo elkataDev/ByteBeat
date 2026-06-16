@@ -29,7 +29,7 @@ public class Playlist {
     @Column(name = "name", nullable = false, length = 60) // NOT NULL, varchar(60)
     private String name;
 
-    @Column(name = "description", nullable = false, columnDefinition = "TEXT") // NOT NULL, tipo Text
+    @Column(name = "description", columnDefinition = "TEXT") // tipo Text
     private String description;
 
     @Column(name = "is_private", nullable = false) // Hibernate ya mapea los primitivos boolean a BOOLEAN en MySQL automáticamente
