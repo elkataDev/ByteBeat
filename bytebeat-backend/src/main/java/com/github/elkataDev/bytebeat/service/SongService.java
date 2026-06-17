@@ -32,4 +32,17 @@ public class SongService {
     public Optional<Song> getSongByTitle(String title){
         return songRepository.findByTitle(title);
     }
+    
+    /**
+     * Logica de negocio
+     * Contador de reproducciones "plays_count"
+     */
+
+    public void incrementPlaysCount(Long songId){
+
+        // validamos que la cancion exista y si existe la guardamos
+        Song song = songRepository.findById(songId).orElseThrow(()-> new RuntimeException("Error: La cancion no existe"));
+
+        song.setPlaysCount(song.getPlaysCount() + 1);
+    }
 }
