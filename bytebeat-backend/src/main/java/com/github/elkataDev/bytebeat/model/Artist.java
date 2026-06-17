@@ -32,6 +32,9 @@ public class Artist {
     @Column(name = "profile_picture_url") // Mapea camelCase de Java a snake_case en la DB por defecto
     private String profilePictureUrl;
 
+    @Column(name = "total_plays", nullable = false)  // Contador para las reproducciones totales del artista
+    private int totalPlays = 0; // Lo inicializamos en 0 por defecto
+
     // OPCIONAL: Sirve para que puedas instanciar objetos nuevos rápidamente antes de meterlos en la base de datos por ejemplo un POST
     // En este caso crear artistas nuevos a mano (ej. en un POST) sin escribir IDs ya que son incrementados
     // Constructor sobrecargado: Para instanciar y persistir rápido en código
@@ -40,5 +43,6 @@ public class Artist {
         this.name = name;
         this.biography = biography;
         this.profilePictureUrl = profilePictureUrl;
+        this.totalPlays = 0; // Inicializado a 0
     }
 }
