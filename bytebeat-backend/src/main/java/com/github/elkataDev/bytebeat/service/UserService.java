@@ -50,29 +50,21 @@ public class UserService {
         // Validar el artista y guardarlo
         Artist artist = artistRepository.findById(artistId).orElseThrow(() -> new RuntimeException("Error: El artista no existe"));
 
-        // Si el usuario lo seguia previamente lo dejara de seguir
-       if (user.getFollowedArtists().contains(artist)) {
-            
+        // Bloque condicional limpio (Toggle)
+        if (user.getFollowedArtists().contains(artist)) {
             // Ya lo seguía -> Procedemos a realizar un UNFOLLOW
             user.getFollowedArtists().remove(artist); // Lo quitamos de la lista del usuario
             artist.setTotalFollowers(artist.getTotalFollowers() - 1); // Restamos 1 al contador global del artista
-            
         } else {
-
             // No lo seguía -> Procedemos a realizar un FOLLOW
             user.getFollowedArtists().add(artist); // Lo añadimos a la lista del usuario
             artist.setTotalFollowers(artist.getTotalFollowers() + 1); // Sumamos 1 al contador global del artista
-            
         }
-
-        // Añadimos el artista a la lista de seguidos del usuario
-        user.getFollowedArtists().add(artist);
-
-        artist.setTotalFollowers(artist.getTotalFollowers() -1);
 
         // Actualizo la BD
         artistRepository.save(artist);
         userRepository.save(user);
+        
         return artist;
-        }
     }
+}
